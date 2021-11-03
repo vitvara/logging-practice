@@ -17,6 +17,11 @@ def logging_test(logger):
     #  Your log message should be an example of the sort of information 
     #  you would log at that level:
     #
+    logger.debug('Debug')
+    logger.info('info')
+    logger.warning('warning')
+    logger.error('error')
+    logger.critical('critical')
     # debug
     # info
     # warning
@@ -24,7 +29,7 @@ def logging_test(logger):
     # error
     # critical or fatal
     level = logging.WARN + 5  # custom log level
-    print("You forgot to write logging_test")
+    logger.log(level,'level')
 
 
 def simple_config():
@@ -54,14 +59,15 @@ def my_config():
     # TODO write your own logging configuration
     #      specify a log file, threshold level, format, and append mode
     pass
-
+    FORMAT = '%(name)s %(levelname)s: %(message)s'
+    logging.basicConfig(format=FORMAT, level=10,filename="out.log", filemode='w')
 
 if __name__ == "__main__":
     #
     # TODO Configure logging using one of these choices:
 
     # 1. Call basicConfig with the default settings
-    logging.basicConfig()
+    # logging.basicConfig()
 
     # 2. Call simple_config to set the format of log messages.
     #    Comment out the above call (#1) to basicConfig for this.
@@ -70,14 +76,20 @@ if __name__ == "__main__":
     # 3. my_config() write your own logging configuration as
     #    described in the assignment. 
     #    Comment out the above calls to simple_config and basicConfig.
-    # my_config() 
+    my_config() 
 
     # Log some messages to the root logger using different logging levels.
-    logger = logging.getLogger()
-    print("Logging to ", str(logger))
-    logging_test(logger)
+    # logger = logging.getLogger()
+    # print("Logging to ", str(logger))
+    # logging_test(logger)
+    # logger = logging.getLogger()
+    # logger.setLevel(logging.WARN) 
+    # logging_test(logger)
 
-
+    # logging for the 'foo' module
+    mylogger = logging.getLogger("Vitvara")
+    mylogger.setLevel(logging.DEBUG)  # log everything
+    logging_test(mylogger)
     # TODO create a named logger, set a a custom log threshold,
     #       and call logging_test again with your named logger.
 
