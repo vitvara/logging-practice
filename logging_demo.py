@@ -13,7 +13,6 @@ def logging_test(logger):
     """Log messages using each of the standard logging levels 
        plus 1 custom log level.
     """ 
-    # TODO write a log message that uses each of these log levels.
     #  Your log message should be an example of the sort of information 
     #  you would log at that level:
     #
@@ -56,15 +55,11 @@ def simple_config():
 
 def my_config():
     """Write your own logging configuration."""
-    # TODO write your own logging configuration
-    #      specify a log file, threshold level, format, and append mode
-    pass
     FORMAT = '%(name)s %(levelname)s: %(message)s'
     logging.basicConfig(format=FORMAT, level=10,filename="out.log", filemode='w')
 
 if __name__ == "__main__":
     #
-    # TODO Configure logging using one of these choices:
 
     # 1. Call basicConfig with the default settings
     # logging.basicConfig()
